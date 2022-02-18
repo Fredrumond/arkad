@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: mysql
+    restart: always
+    tty: true
+    volumes: 
+      - ./mysql:/var/lib/mysql
+    environment: 
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ROOT_PASSWORD=root
+    networks: 
+       - arkad-network
+
+  php:
+    container_name: php-apache
+    build:
+      context: ./docker/php
+    ports:
+      - '8080:80'
+    volumes:
+      - ./src:/var/www/laravel
+      - ./docker/apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+    depends_on:
+      - db
+    networks: 
+      - arkad-network
+
+networks: 
+  arkad-network:
+    driver: bridge
