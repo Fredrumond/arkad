@@ -5,7 +5,8 @@ RUN apt update && apt install -y zlib1g-dev g++ libicu-dev zip libzip-dev zip li
     && pecl install apcu \
     && docker-php-ext-enable apcu \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install zip
+    && docker-php-ext-install zip \
+    && a2enmod rewrite
 
 WORKDIR /var/www/laravel
 
