@@ -1,0 +1,26 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your super  ApplicationAPI",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/consult-actives": {
+            "get": {
+                "tags": [
+                    "Ativos"
+                ],
+                "description": "Consultar os ativos",
+                "operationId": "authLogin",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

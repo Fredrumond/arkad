@@ -5,6 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use App\Services\StatusInvestService;
 
+/**
+ * @OA\Get(
+ * path="/consult-actives",
+ * description="Consultar os ativos",
+ * operationId="authLogin",
+ * tags={"Ativos"},
+ * @OA\Response(
+ *    response=200,
+ *    description="Successful operation",
+ *   )
+ * )
+ */
+
 class StatusInvestController extends Controller
 {
     public function index(){
