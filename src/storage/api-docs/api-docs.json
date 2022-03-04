@@ -1,16 +1,16 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Your super  ApplicationAPI",
+        "title": "ARKED - API",
         "version": "1.0.0"
     },
     "paths": {
-        "/consult-actives": {
+        "api/actives": {
             "get": {
                 "tags": [
                     "Ativos"
                 ],
-                "description": "Consultar os ativos",
+                "description": "Retorna todos os ativos",
                 "operationId": "authLogin",
                 "responses": {
                     "200": {

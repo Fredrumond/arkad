@@ -3,15 +3,25 @@
 namespace App\Components;
 
 class StatusInvest {
-    public static function getCurrentPrice($value){
-        return Util::removeSpaceCaracter(explode("R$",explode("arrow",$value)[0])[1]);
+
+    private $element;
+
+    public function setElement($element){
+        $this->element = $element;
     }
 
-    public static function getCurrentVariation($value){
-        return  self::getLastVariation(explode("arrow",$value)[1]);
+    public function currentPrice(){ //Valor atualR$48,79 arrow_downward-0,73%
+        $removeExtraInformations = explode("arrow",$this->element)[0];
+        $extractValue = explode("R$",$removeExtraInformations)[1];
+
+        return Util::removeSpaceCaracter($extractValue," ");
     }
 
-    public static function getLastVariation($value){
+    public function currentVariation(){
+        return $this->getLastVariation(explode("arrow",$this->element)[1]);
+    }
+
+    private function getLastVariation($value){
         $lastVariation = explode(" ",$value);
 
         if(str_contains($lastVariation[0],"_upward")){
@@ -25,33 +35,35 @@ class StatusInvest {
         return Util::removeSpaceCaracter($variation);
     }
 
-    public static function getMinPriceLastWeekends($value){
-        return Util::removeSpaceCaracter(explode("R$",explode("Min",$value)[1])[1]);
+    public function minPriceLastWeekends(){
+        return Util::removeSpaceCaracter(explode("R$",explode("Min",$this->element)[1])[1]);
     }
 
-    public static function getMinPriceMonth($value){
-        return Util::removeSpaceCaracter(explode("R$",explode("Min",$value)[2])[1]);
+    public function minPriceMonth(){
+        return Util::removeSpaceCaracter(explode("R$",explode("Min",$this->element)[2])[1]," ");
     }
 
-    public static function getMaxPriceLastWeekends($value){
-        return Util::removeSpaceCaracter(explode("R$",explode("Máx",$value)[1])[1]);
+    public function maxPriceLastWeekends(){
+        return Util::removeSpaceCaracter(explode("R$",explode("Máx",$this->element)[1])[1]);
     }
 
-    public static function getMaxPriceMonth($value){
-        return Util::removeSpaceCaracter(explode("R$",explode("Máx",$value)[2])[1]);
+    public function maxPriceMonth(){
+        return Util::removeSpaceCaracter(explode("R$",explode("Máx",$this->element)[2])[1]," ");
     }
 
-    public static function getDividendYield($value){
-        $dividendYieldExplode = explode("DATA COM",$value)[1];
+    public function dividendYield(){
+        
+        $dividendYieldExplode = explode("DATA COM",$this->element)[1];
+        
         $dividendYield = Util::removeSpaceCaracter(explode(".",$dividendYieldExplode)[2]);
-
+        
         return [
             "percent" => explode("%",$dividendYield)[0],
             "value" => explode("R$",$dividendYield)[1]
         ];
     }
 
-    public static function getActiveName($value,$type){
+    public static function setName($value,$type){
         $explodeParameter = $type == 'acoes' ? "ON" : ":";
         return Util::removeSpaceCaracter(explode($explodeParameter,$value)[0]);
     }

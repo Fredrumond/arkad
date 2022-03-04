@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Goutte\Client;
 Use App\Components\StatusInvest;
+Use App\Components\Util;
 
 class StatusInvestService {
 
@@ -16,28 +17,33 @@ class StatusInvestService {
         $client = new Client();
         $crawler = $client->request('GET', self::URL . $typeAction .  $active);
 
+        $statusInvest = new StatusInvest();
+
         foreach ($crawler as $key => $domElement) {
-            $name = StatusInvest::getActiveName($domElement->nodeValue,$typeAction);
+            $name = $statusInvest->setName($domElement->nodeValue,$typeAction);
         }
 
         foreach ($crawler->filter('.top-info .info') as $key => $domElement) {
+            $element = Util::removeSpaceCaracter($domElement->nodeValue);
+            $statusInvest->setElement($element);
+           
             if($key == 0){
-                $currentPrice = StatusInvest::getCurrentPrice($domElement->nodeValue);
-                $currentCariation = StatusInvest::getCurrentVariation($domElement->nodeValue);
+                $currentPrice = $statusInvest->currentPrice();
+                $currentCariation = $statusInvest->currentVariation();
             }
 
             if($key == 1){
-                $minPriceLastWeekends = StatusInvest::getMinPriceLastWeekends($domElement->nodeValue);
-                $minPriceMonth = StatusInvest::getMinPriceMonth($domElement->nodeValue);
+                $minPriceLastWeekends = $statusInvest->minPriceLastWeekends();
+                $minPriceMonth = $statusInvest->minPriceMonth();
             }
 
             if($key == 2){
-                $maxPriceLastWeekends = StatusInvest::getMaxPriceLastWeekends($domElement->nodeValue);
-                $maxPriceMonth = StatusInvest::getMaxPriceMonth($domElement->nodeValue);
+                $maxPriceLastWeekends = $statusInvest->maxPriceLastWeekends();
+                $maxPriceMonth = $statusInvest->maxPriceMonth();
             }
 
             if($key == 3){
-                $dividendYield = StatusInvest::getDividendYield($domElement->nodeValue);
+                $dividendYield = $statusInvest->dividendYield();
             }
         }
 

@@ -7,24 +7,25 @@ Use App\Services\StatusInvestService;
 
 /**
  * @OA\Get(
- * path="/consult-actives",
- * description="Consultar os ativos",
+ * path="api/actives",
+ * description="Retorna todos os ativos",
  * operationId="authLogin",
  * tags={"Ativos"},
  * @OA\Response(
  *    response=200,
  *    description="Successful operation",
+
  *   )
  * )
  */
 
-class StatusInvestController extends Controller
+class ActivesController extends Controller
 {
     public function index(){
         // $listAcoes = ["VIVT3","HYPE3","ALUP11","ENBR3","SAPR4","ITSA4","ABEV3","BBSE3","QUAL3"];
         // $listFundos = ["HSML11","VISC11","SDIL11","XPLG11","HFOF11","BPFF11","VINO11","PVBI11","BCRI11","MXRF11"];
         $listAcoes = ["VIVT3"];
-        $listFundos = ["HSML11"];
+        // $listFundos = ["HSML11"];
 
         $fundos = [];
         $acoes = [];
@@ -33,9 +34,9 @@ class StatusInvestController extends Controller
             array_push($acoes,StatusInvestService::getInfos($listAcoes[$i],"acoes"));
         }
 
-        for ($i=0; $i < sizeof($listFundos); $i++) { 
-            array_push($fundos,StatusInvestService::getInfos($listFundos[$i],"fundos"));
-        }
+        // for ($i=0; $i < sizeof($listFundos); $i++) { 
+        //     array_push($fundos,StatusInvestService::getInfos($listFundos[$i],"fundos"));
+        // }
 
         return array_merge($fundos,$acoes);
     }
