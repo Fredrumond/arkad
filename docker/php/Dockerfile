@@ -11,3 +11,6 @@ RUN apt update && apt install -y zlib1g-dev g++ libicu-dev zip libzip-dev zip li
 WORKDIR /var/www/laravel
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
