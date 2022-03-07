@@ -7,6 +7,22 @@ Use App\Components\StatusInvest;
 
 class StatusInvestTest extends TestCase
 {
+    public function testSetNameAcao()
+    {
+        $value = 'VIVT3 - TELEFÔNICA BRASIL ON: cotação e indicadores';
+        $statusInvest = new StatusInvest();
+        $statusInvest->setElement($value);
+        $this->assertEquals('VIVT3 - TELEFÔNICA BRASIL ',$statusInvest->setName($value,"acoes"));
+    }
+
+    public function testSetNameFundo()
+    {
+        $value = 'HSML11 - HSI MALL FDO INV IMOB: dividendos e cotação';
+        $statusInvest = new StatusInvest();
+        $statusInvest->setElement($value);
+        $this->assertEquals('HSML11 - HSI MALL FDO INV IMOB',$statusInvest->setName($value,"fundos"));
+    }
+
     public function testCurrentPrice()
     {
         $value = 'Valor atualR$48,79 arrow_downward-0,73%';

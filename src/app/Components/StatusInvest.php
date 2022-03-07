@@ -63,8 +63,10 @@ class StatusInvest {
         ];
     }
 
-    public static function setName($value,$type){
+    public function setName($element,$type)
+    {
+        $value = Util::removeSpaceCaracter($element);
         $explodeParameter = $type == 'acoes' ? "ON" : ":";
-        return Util::removeSpaceCaracter(explode($explodeParameter,$value)[0]);
+        return explode($explodeParameter,$value)[0];
     }
 }
