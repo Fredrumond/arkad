@@ -7,67 +7,65 @@ Use App\Components\StatusInvest;
 
 class StatusInvestTest extends TestCase
 {
-    public function testSetNameAcao()
+    public function createStatusInvestName($value,$type)
     {
-        $value = 'VIVT3 - TELEFÔNICA BRASIL ON: cotação e indicadores';
+        $statusInvest = new StatusInvest();
+        $statusInvest->setName($value,$type);
+        return $statusInvest;
+    }
+
+    public function createStatusInvesElement($value)
+    {
         $statusInvest = new StatusInvest();
         $statusInvest->setElement($value);
-        $this->assertEquals('VIVT3 - TELEFÔNICA BRASIL ',$statusInvest->setName($value,"acoes"));
+        return $statusInvest;
+    }
+
+    public function testSetNameAcao()
+    {
+        $statusInvest = $this->createStatusInvestName('VIVT3 - TELEFÔNICA BRASIL ON: cotação e indicadores','acoes');
+        $this->assertEquals('VIVT3 - TELEFÔNICA BRASIL ',$statusInvest->getName());
     }
 
     public function testSetNameFundo()
     {
-        $value = 'HSML11 - HSI MALL FDO INV IMOB: dividendos e cotação';
-        $statusInvest = new StatusInvest();
-        $statusInvest->setElement($value);
-        $this->assertEquals('HSML11 - HSI MALL FDO INV IMOB',$statusInvest->setName($value,"fundos"));
+        $statusInvest = $this->createStatusInvestName('HSML11 - HSI MALL FDO INV IMOB: dividendos e cotação','fundos');
+        $this->assertEquals('HSML11 - HSI MALL FDO INV IMOB',$statusInvest->getName());
     }
 
     public function testCurrentPrice()
     {
-        $value = 'Valor atualR$48,79 arrow_downward-0,73%';
-        $statusInvest = new StatusInvest();
-        $statusInvest->setElement($value);
+        $statusInvest = $this->createStatusInvesElement('Valor atualR$48,79 arrow_downward-0,73%');
         $this->assertEquals('48,79',$statusInvest->currentPrice());
     }
 
     public function testCurrentVariation()
     {
-        $value = 'Valor atualR$48,79 arrow_downward-0,73%';
-        $statusInvest = new StatusInvest();
-        $statusInvest->setElement($value);
+        $statusInvest = $this->createStatusInvesElement('Valor atualR$48,79 arrow_downward-0,73%');
         $this->assertEquals('-0,73%',$statusInvest->currentVariation());
     }
 
     public function testMinPriceLastWeekends()
     {
-        $value = 'Min. 52 semanasR$39,35Min. mêsR$ 48,79';
-        $statusInvest = new StatusInvest();
-        $statusInvest->setElement($value);
+        $statusInvest = $this->createStatusInvesElement('Min. 52 semanasR$39,35Min. mêsR$ 48,79');
         $this->assertEquals('39,35',$statusInvest->minPriceLastWeekends());
     }
 
     public function testMinPriceMonth()
     {
-        $value = 'Min. 52 semanasR$39,35Min. mêsR$ 48,79';
-        $statusInvest = new StatusInvest();
-        $statusInvest->setElement($value);
+        $statusInvest = $this->createStatusInvesElement('Min. 52 semanasR$39,35Min. mêsR$ 48,79');
         $this->assertEquals('48,79',$statusInvest->minPriceMonth());
     }
 
     public function testMaxPriceLastWeekends()
     {
-        $value = 'Máx. 52 semanasR$50,92Máx. mêsR$ 49,15';
-        $statusInvest = new StatusInvest();
-        $statusInvest->setElement($value);
+        $statusInvest = $this->createStatusInvesElement('Máx. 52 semanasR$50,92Máx. mêsR$ 49,15');
         $this->assertEquals('50,92',$statusInvest->maxPriceLastWeekends());
     }
 
     public function testMaxPriceMonth()
     {
-        $value = 'Máx. 52 semanasR$50,92Máx. mêsR$ 49,15';
-        $statusInvest = new StatusInvest();
-        $statusInvest->setElement($value);
+        $statusInvest = $this->createStatusInvesElement('Máx. 52 semanasR$50,92Máx. mêsR$ 49,15');
         $this->assertEquals('49,15',$statusInvest->maxPriceMonth());
     }
 

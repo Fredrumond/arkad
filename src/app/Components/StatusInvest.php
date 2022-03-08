@@ -5,9 +5,22 @@ namespace App\Components;
 class StatusInvest {
 
     private $element;
+    private $name;
 
     public function setElement($element){
         $this->element = $element;
+    }
+
+    public function setName($element,$type)
+    {
+        $value = Util::removeSpaceCaracter($element);
+        $explodeParameter = $type == 'acoes' ? "ON" : ":";
+        $this->name = explode($explodeParameter,$value)[0];
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function currentPrice(){ //Valor atualR$48,79 arrow_downward-0,73%
@@ -63,10 +76,5 @@ class StatusInvest {
         ];
     }
 
-    public function setName($element,$type)
-    {
-        $value = Util::removeSpaceCaracter($element);
-        $explodeParameter = $type == 'acoes' ? "ON" : ":";
-        return explode($explodeParameter,$value)[0];
-    }
+    
 }

@@ -20,7 +20,7 @@ class StatusInvestService {
         $statusInvest = new StatusInvest();
 
         foreach ($crawler as $key => $domElement) {
-            $name = $statusInvest->setName($domElement->nodeValue,$typeAction);
+            $statusInvest->setName($domElement->nodeValue,$typeAction);
         }
 
         foreach ($crawler->filter('.top-info .info') as $key => $domElement) {
@@ -48,7 +48,7 @@ class StatusInvestService {
         }
 
         $activeInfos = [
-            "name" => $name,
+            "name" => $statusInvest->getName(),
             "current" => [
                 "price" => $currentPrice,
                 "variation" => $currentCariation,
