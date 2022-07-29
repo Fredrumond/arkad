@@ -12,7 +12,8 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "fredrumond/arkad-crawler": "^1.0.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -60,5 +61,11 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type":"vcs",
+            "url":"https://github.com/fredrumond/arkad_search"
+        }
+    ]
 }
