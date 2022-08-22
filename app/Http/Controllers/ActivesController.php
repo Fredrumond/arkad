@@ -21,17 +21,26 @@ use App\Services\ArkadCrawlerService;
 
 class ActivesController extends Controller
 {
-    public function index(){
-        $config = [
-            "codes" => [
-                "acoes" => [
-                    "itub3"
-                ],
-                "fundos" => [
-                    "hsml11"
+    public function index(Request $request,$type)
+    {
+        $searchQuerey = $request->query('codes');
+
+        if($type == 'funds'){
+            $config = [
+                "codes" => [
+                    "fundos" => explode(',',$searchQuerey)
                 ]
-            ]
-        ];
+            ];
+        }
+
+        if($type == 'actions'){
+            $config = [
+                "codes" => [
+                    "acoes" => explode(',',$searchQuerey)
+                ]
+            ];
+        }
+
         $service = new ArkadCrawlerService($config);
         return $service->search();
     }

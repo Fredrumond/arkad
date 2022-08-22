@@ -965,16 +965,16 @@
         },
         {
             "name": "fredrumond/arkad-crawler",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Fredrumond/arkad_search.git",
-                "reference": "bd5345d90e4a867d3156f4be5e186b0ebff5a75c"
+                "reference": "e04b2b40e29159dcd6f82a873e85f97c5e940198"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Fredrumond/arkad_search/zipball/bd5345d90e4a867d3156f4be5e186b0ebff5a75c",
-                "reference": "bd5345d90e4a867d3156f4be5e186b0ebff5a75c",
+                "url": "https://api.github.com/repos/Fredrumond/arkad_search/zipball/e04b2b40e29159dcd6f82a873e85f97c5e940198",
+                "reference": "e04b2b40e29159dcd6f82a873e85f97c5e940198",
                 "shasum": ""
             },
             "require": {
@@ -1011,10 +1011,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/Fredrumond/arkad_search/tree/v1.0.2",
+                "source": "https://github.com/Fredrumond/arkad_search/tree/v1.0.3",
                 "issues": "https://github.com/Fredrumond/arkad_search/issues"
             },
-            "time": "2022-07-29T17:09:40+00:00"
+            "time": "2022-08-22T18:54:42+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
