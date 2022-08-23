@@ -5,7 +5,7 @@ return [
     'documentations' => [
         'default' => [
             'api' => [
-                'title' => 'ARKED - API',
+                'title' => 'ARKAD - API',
             ],
 
             'routes' => [
