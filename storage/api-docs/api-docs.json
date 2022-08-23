@@ -5,7 +5,7 @@
         "version": "1.0.0"
     },
     "paths": {
-        "api/actives": {
+        "api/actives/funds/{code}": {
             "get": {
                 "tags": [
                     "Ativos"
@@ -19,8 +19,5 @@
                 }
             }
         }
-    },
-    "security": [
-        []
-    ]
+    }
 }
