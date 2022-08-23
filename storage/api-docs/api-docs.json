@@ -1,20 +1,36 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "ARKED - API",
+        "title": "ARKAD - API",
         "version": "1.0.0"
     },
+    "servers": [
+        {
+            "url": "/api/v1"
+        }
+    ],
     "paths": {
-        "api/actives/funds/{code}": {
+        "/actives/funds": {
             "get": {
                 "tags": [
                     "Ativos"
                 ],
-                "description": "Retorna todos os ativos",
-                "operationId": "authLogin",
+                "summary": "Retorna lista de fundos imobiliarios",
+                "description": "Utilize este método para listar os fundos imobiliarios cadastrado na base.\n                       Leia a documentação sobre paginação e filtros de busca.",
+                "operationId": "dbc941c8c09b34d7620dbee9862441f7",
+                "parameters": [
+                    {
+                        "name": "codes",
+                        "in": "query",
+                        "description": "Atributa para listar os ativos para consulta",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Consulta realizada com sucesso."
                     }
                 }
             }
