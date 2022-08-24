@@ -10,6 +10,31 @@
         }
     ],
     "paths": {
+        "/actives/actions": {
+            "get": {
+                "tags": [
+                    "Ativos"
+                ],
+                "summary": "Retorna lista de ações",
+                "description": "Utilize este método para listar as ações cadastrado na base.\n                       Leia a documentação sobre paginação e filtros de busca.",
+                "operationId": "80bf3d30523fd5a1dcd8942dbd7a9af1",
+                "parameters": [
+                    {
+                        "name": "codes",
+                        "in": "query",
+                        "description": "Atributa para listar os ativos para consulta",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Consulta realizada com sucesso."
+                    }
+                }
+            }
+        },
         "/actives/funds": {
             "get": {
                 "tags": [
