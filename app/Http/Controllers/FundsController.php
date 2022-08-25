@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Components\ArkadCrawlerComponent;
 use Illuminate\Http\Request;
-use App\Services\ArkadCrawlerService;
-
 
 class FundsController extends Controller
 {
@@ -31,26 +30,11 @@ class FundsController extends Controller
     public function index(Request $request)
     {
         $searchQuerey = $request->query('codes');
-
-        $config = [
-            "codes" => [
-                "fundos" => explode(',',$searchQuerey)
-            ]
-        ];
-
-        $service = new ArkadCrawlerService($config);
-        return $service->search();
+        return ArkadCrawlerComponent::searchActive("fundos",explode(',',$searchQuerey));
     }
 
     public function show($code)
     {
-        $config = [
-            "codes" => [
-                "fundos" => [$code]
-            ]
-        ];
-
-        $service = new ArkadCrawlerService($config);
-        return $service->search();
+        return ArkadCrawlerComponent::searchActive("fundos",[$code]);
     }
 }
